@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-payment-deployment
+  labels:
+    app: ms-payment-orchestrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-payment-orchestrator
+  template:
+    metadata:
+      labels:
+        app: ms-payment-orchestrator
+    spec:
+      containers:
+        - name: ms-payment-orchestrator
+          image: docker.io/mmmdliayxan321/ms-payment-orchestrator:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://shared-postgres:5432/ticketdb"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "password"
