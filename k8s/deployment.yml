@@ -19,7 +19,7 @@ spec:
           image: docker.io/mmmdliayxan321/ms-payment-orchestrator:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8083
+            - containerPort: 8084
           env:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://shared-postgres:5432/ticketdb"
