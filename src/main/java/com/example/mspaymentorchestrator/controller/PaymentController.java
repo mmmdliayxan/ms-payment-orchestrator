@@ -18,10 +18,9 @@ public class PaymentController {
     private final PaymentService sagaService;
 
     @PostMapping("/start")
-    public ResponseEntity<String> startSaga(@RequestBody TicketOrderDto order,
+    public void startSaga(@RequestBody TicketOrderDto order,
                                             @RequestBody PaymentRequest paymentRequest) {
         sagaService.startSaga(order,paymentRequest);
-        return ResponseEntity.ok("Saga started for orderId=" + order.getTicketId());
     }
 
 }
